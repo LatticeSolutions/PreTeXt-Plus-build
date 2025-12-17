@@ -1,0 +1,6 @@
+<pretext>
+  <article label="article">
+    <title>{{title}}</title>
+{{source}}
+  </article>
+</pretext>

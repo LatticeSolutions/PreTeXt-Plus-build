@@ -1,0 +1,8 @@
+<form method="post">
+    <input type="hidden" name="token" value="{{token}}">
+    <input name="title" value="Hello world! Goodbye <m>\LaTeX</m>!"><br>
+    <textarea style="width:100%;height:90%" name="source">{{"""
+<p>This is math: <m>x^2</m>.</p>
+"""}}</textarea><br>
+    <button type="submit">Submit</button>
+</form>

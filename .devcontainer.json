@@ -1,0 +1,7 @@
+{
+  "remoteEnv": {
+    "DEVELOPMENT": "true",
+    "BUILD_TOKEN": "token"
+  },
+  "postCreateCommand": "pip install -r requiremens.txt"
+}
