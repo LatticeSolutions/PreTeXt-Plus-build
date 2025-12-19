@@ -1,10 +1,19 @@
+
+import logging
+from io import StringIO
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from os import environ
 from flask import Flask, render_template, request
 from pretext.project import Project
+from pretext.logger import get_log_error_flush_handler
 
 app = Flask(__name__)
+
+log = logging.getLogger("ptxlogger")
+log_stream = StringIO()
+log_handler = logging.StreamHandler(log_stream)
+log.addHandler(log_handler)
 
 # get token from environment
 TOKEN = environ.get("BUILD_TOKEN")
@@ -36,11 +45,19 @@ def api():
             source=request.form.get('source'),
             title=request.form.get('title'),
         ))
-        # create standalone target
-        target = standalone_target(source_path, temp_dir)
-        target.build()
-        # print out all files in temp_dir
-        for file in temp_dir.iterdir():
-            print(file.name)
-        # read the generated HTML file
+        # build standalone target
+        try:
+            standalone_target(source_path, temp_dir).build()
+        except Exception as e:
+            response = f"""
+<h2>{e}</h2>
+<h3>Error logs:</h3>
+<pre>
+{log_stream.getvalue()}
+</pre>
+            """
+            log_stream.seek(0)
+            log_stream.truncate(0)
+            return response, 500
+        # return the generated HTML file
         return (temp_dir / "article.html").read_text()
