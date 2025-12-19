@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<publication>
+
+  <common>
+    <chunking level="0" />
+    <tableofcontents level="0" />
+    <exercise-inline statement="yes" hint="yes" answer="yes" solution="yes" />
+    <exercise-divisional statement="yes" hint="yes" answer="yes" solution="yes" />
+    <exercise-worksheet statement="yes" hint="yes" answer="yes" solution="yes" />
+    <exercise-reading statement="yes" hint="yes" answer="yes" solution="yes" />
+    <exercise-project statement="yes" hint="yes" answer="yes" solution="yes" />
+  </common>
+
+  <source>
+    <directories external="../assets" generated="../generated-assets" />
+  </source>
+
+  <numbering>
+    <divisions level="0"/>
+    <blocks level="0" />
+    <projects level="0" />
+    <equations level="0" />
+    <footnotes level="0" />
+  </numbering>
+
+  <html embed-button="yes">
+    <css
+      theme="denver"
+      primary-color="#386F94"
+      primary-color-dark="#5192BD"
+    />
+    <toc 
+      focused="yes"
+      preexpanded-levels="0"
+    />
+    <platform portable="yes" />
+  </html>
+
+</publication>
