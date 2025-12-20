@@ -2,9 +2,10 @@
 import logging
 from io import StringIO
 from pathlib import Path
+import shutil
 from tempfile import TemporaryDirectory
 from os import environ
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from pretext.project import Project
 from pretext.logger import get_log_error_flush_handler
 
@@ -27,6 +28,10 @@ def standalone_target(temp_dir:Path):
         publication=temp_dir/"publication.ptx",
         output_dir=temp_dir/"output",
     )
+
+@app.route("/external/icon.svg")
+def icon_svg():
+    return send_file("icon.svg")
 
 
 @app.route("/", methods=["GET", "POST"])

@@ -1,4 +1,7 @@
 <pretext>
+  <docinfo>
+    <brandlogo source="icon.svg" />
+  </docinfo>
   <article label="article">
     <title>{{title}}</title>
 {{source}}
