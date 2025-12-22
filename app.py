@@ -2,6 +2,7 @@
 import logging
 from io import StringIO
 from pathlib import Path
+import re
 import shutil
 from tempfile import TemporaryDirectory
 from os import environ
@@ -44,10 +45,13 @@ def api():
         return "Invalid token", 401
     with TemporaryDirectory() as temp_dir_name:
         temp_dir = Path(temp_dir_name)
+        source = request.form.get('source')
+        # edit out any xml manifest
+        source = re.sub(r'<\?xml.*\?>','', source)
         # write source to file temp_dir/source.ptx
         (temp_dir/"source.ptx").write_text(render_template(
             "source.ptx",
-            source=request.form.get('source'),
+            source=source,
             title=request.form.get('title'),
         ))
         # write publication to file temp_dir/source.ptx
