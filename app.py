@@ -7,11 +7,13 @@ import shutil
 from tempfile import TemporaryDirectory
 from os import environ
 from flask import Flask, render_template, request, send_file, make_response
+from flask_cors import CORS
 import prefig
 from pretext.project import Project
 from pretext.logger import get_log_error_flush_handler
 
 app = Flask(__name__)
+CORS(app)
 
 log = logging.getLogger("ptxlogger")
 log_stream = StringIO()
