@@ -4,6 +4,7 @@ from io import StringIO
 from pathlib import Path
 import re
 import shutil
+import html
 from tempfile import TemporaryDirectory
 from os import environ
 from flask import Flask, render_template, request, send_file, make_response
@@ -73,7 +74,7 @@ def pretext():
 <h2>{e}</h2>
 <h3>Error logs:</h3>
 <pre>
-{log_stream.getvalue()}
+{html.escape(log_stream.getvalue())}
 </pre>
             """
             log_stream.seek(0)
