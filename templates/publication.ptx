@@ -34,6 +34,19 @@
       preexpanded-levels="0"
     />
     <platform portable="yes" />
+    <knowl 
+      theorem="no" 
+      definition="no" 
+      remark="no" 
+      example="no"
+      figure="no"
+      table="no"
+      listing="no"
+      exercise-inline="no"
+      exercise-divisional="no"
+      project="no" 
+      proof="yes"
+    />
   </html>
 
 </publication>
