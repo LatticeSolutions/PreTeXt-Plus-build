@@ -112,12 +112,10 @@ def pretext():
         # write publication to file temp_dir/publication.ptx
         if request.form.get("format") == "zip":
             chunking = "1"
-            portable = "no"
         else:
             chunking = "0"
-            portable = "yes"
         (temp_dir/"publication.ptx").write_text(render_template(
-            "publication.ptx",chunking=chunking,portable=portable
+            "publication.ptx",chunking=chunking
         ))
         # build appropriate target
         try:
