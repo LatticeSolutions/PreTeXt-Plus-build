@@ -33,7 +33,7 @@
       focused="yes"
       preexpanded-levels="0"
     />
-    <platform portable="{{portable}}" />
+    <platform portable="yes" />
     <knowl 
       theorem="no" 
       definition="no" 
