@@ -2,8 +2,8 @@
 <publication>
 
   <common>
-    <chunking level="0" />
-    <tableofcontents level="0" />
+    <chunking level="{{chunking}}" />
+    <tableofcontents level="{{chunking}}" />
     <exercise-inline statement="yes" hint="yes" answer="yes" solution="yes" />
     <exercise-divisional statement="yes" hint="yes" answer="yes" solution="yes" />
     <exercise-worksheet statement="yes" hint="yes" answer="yes" solution="yes" />
