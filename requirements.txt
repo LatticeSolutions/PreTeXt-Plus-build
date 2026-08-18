@@ -3,3 +3,5 @@ flask-cors
 gunicorn
 pretext
 prefig[pycairo]
+
+pypandoc_binary

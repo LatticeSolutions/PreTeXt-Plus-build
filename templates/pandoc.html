@@ -1,0 +1,8 @@
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" name="token" value="{{token}}">
+    <label>from <input name="from" placeholder="markdown (blank = detect from upload)"></label>
+    <label><input type="checkbox" name="standalone" value="yes"> standalone</label>
+    <label>or upload <input type="file" name="file"></label><br>
+    <textarea style="width:100%;height:75%" name="source">{{source}}</textarea>
+    <button type="submit">Convert to PreTeXt</button>
+</form>
