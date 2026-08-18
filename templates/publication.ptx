@@ -12,7 +12,7 @@
   </common>
 
   <source>
-    <directories external="../assets" generated="../generated-assets" />
+    <directories generated="../generated-assets" />
   </source>
 
   <numbering>
@@ -23,7 +23,7 @@
     <footnotes level="0" />
   </numbering>
 
-  <html embed-button="yes">
+  <html embed-button="no">
     <css
       theme="denver"
       primary-color="#386F94"
