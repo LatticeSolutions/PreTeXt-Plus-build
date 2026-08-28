@@ -1,0 +1,3 @@
+[submodule "pandoc-pretext"]
+	path = pandoc-pretext
+	url = https://github.com/oscarlevin/pandoc-pretext.git
