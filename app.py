@@ -221,7 +221,10 @@ PANDOC_EXTENSIONS = {
     ".ipynb": "ipynb", ".typ": "typst", ".xml": "docbook", ".textile": "textile",
 }
 
-PANDOC_TIMEOUT_SECONDS = 60
+# Kept strictly below Gunicorn's 30s worker timeout: if the two are equal the
+# worker can be killed at the same moment this fires, and the client gets a
+# dropped connection instead of the 504 below.
+PANDOC_TIMEOUT_SECONDS = 25
 
 
 def pandoc_pretext_args(from_format: str, standalone: bool) -> list[str]:

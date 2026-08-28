@@ -111,6 +111,13 @@ containers and cannot survive a form field, so they are listed separately in
 text. Uploads are written to a temporary file named by *us* — only the extension
 comes from the client — so a hostile filename cannot escape the directory.
 
+**`PANDOC_TIMEOUT_SECONDS` sits below Gunicorn's worker timeout.** Gunicorn
+defaults to killing a worker after 30 seconds, so a conversion limit of 30 or
+more is unreachable: the worker dies first and the client gets a dropped
+connection instead of the `504`. The limit is therefore 25. If Render's start
+command ever passes an explicit `--timeout`, this constant should move with it,
+staying strictly below.
+
 **The format allowlist is deliberately narrower than Pandoc's.** Every input
 format is another parser exposed to untrusted input, so `PANDOC_TEXT_FORMATS`
 lists only formats a PreTeXt author plausibly arrives with.
@@ -136,13 +143,6 @@ become bare `<xref>` elements with no matching `<biblio>` entries, so accepting 
 `.bib` upload could be a path to generating those. Whether that belongs in this
 endpoint is undecided. Adding a format is a one-line edit to the set, plus an
 entry in `PANDOC_EXTENSIONS` if it should auto-detect from a filename.
-
-**`PANDOC_TIMEOUT_SECONDS` is probably unreachable.** It is set to 60, but
-Gunicorn's default worker timeout is 30 seconds. If Render's start command does
-not override it, a slow conversion kills the worker at 30s and the client sees a
-dropped connection rather than the intended `504`. Resolve by either lowering
-`PANDOC_TIMEOUT_SECONDS` below Gunicorn's timeout, or adding `--timeout` to the
-start command in the Render dashboard. Needs dashboard access to check.
 
 **There is no request size cap.** `app.config["MAX_CONTENT_LENGTH"]` would
 protect all three endpoints, not just this one. Relevant now that `/pandoc/`
